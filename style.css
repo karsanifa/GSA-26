@@ -1,0 +1,484 @@
+/* ================= GLOBAL RESET & TYPOGRAPHY ================= */
+/* ================= GLOBAL RESET & TYPOGRAPHY ================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Tahoma', -apple-system, sans-serif;
+    font-size: 13px;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: none;
+}
+
+/* --- BAGIAN INI YANG KAMU UBAH --- */
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Tetap pertahankan overflow hidden agar UI OS mulus */
+    
+    /* 1. Hapus atau matikan warna teal yang lama: */
+    /* background-color: #008080; */ 
+    
+    /* 2. Masukkan foto kamu dengan alamat relatif: */
+    /* Ganti 'foto_fika.jpg' dengan nama file asli foto kamu ya! */
+    background-image: url('win.jpg'); 
+    
+    /* 3. ATURAN PENTING agar fotonya tampil rapi di desktop: */
+    background-size: cover; /* Biar foto memenuhi seluruh layar tanpa penyet */
+    background-position: center; /* Gambarnya pas di tengah-tengah */
+    background-repeat: no-repeat; /* Gambarnya jangan mengulang-ulang (uabin) */
+    
+    /* Tips Pro: Jangan hapus warna asli, simpan sebagai cadangan jika gambar gagal load */
+    /* background-color: #008080; */ /* Ini bisa jadi warna cadangan */
+
+    user-select: none; /* Biar text di desktop gak bisa diseleksi */
+}
+
+
+/* ================= 90s GAME BOOT SCREEN STYLING ================= */
+#boot-screen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #000000; /* Hitam pekat game retro */
+    font-family: 'VT323', 'Courier New', monospace;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boot-container {
+    text-align: center;
+    max-width: 650px;
+    padding: 20px;
+}
+
+.game-title {
+    font-size: 58px;
+    color: #ffcc00; /* Kuning Emas khas Arcade Game */
+    margin-bottom: 25px;
+    letter-spacing: 3px;
+    font-family: 'VT323', monospace;
+    text-shadow: 3px 3px #ff00ff, -3px -3px #00ffff;
+}
+
+.game-text {
+    font-size: 24px;
+    margin-bottom: 12px;
+    font-family: 'VT323', monospace;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* Variasi Warna Multi-Color Layaknya Game 90-an */
+.game-text.cyan { color: #00ffff; }
+.game-text.yellow { color: #ffff00; }
+.game-text.white { color: #ffffff; }
+.game-text.red { color: #ff3333; }
+.game-text.green { color: #00ff00; }
+
+/* Efek Blok Stabilo pada Teks */
+.game-text b {
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 0 6px;
+    border-radius: 2px;
+}
+
+/* Desain UI Loading Progress Bar Retro */
+.boot-progress-zone {
+    width: 320px;
+    margin: 25px auto;
+    text-align: center;
+}
+
+.boot-progress-bar {
+    width: 100%;
+    height: 22px;
+    border: 3px solid #ffffff;
+    background-color: #222222;
+    padding: 2px;
+    margin-top: 8px;
+    box-shadow: 2px 2px 0px #444444;
+}
+
+#boot-progress-fill {
+    width: 0%;
+    height: 100%;
+    background-color: #00ff00; /* Bar Hijau Neon terang */
+    transition: width 0.1s linear;
+}
+
+/* ================= DESKTOP STYLING GRID ================= */
+#desktop {
+    width: 100%;
+    height: calc(100% - 40px);
+    position: relative;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 15px;
+}
+
+/* DESKTOP SHORTCUTS */
+.shortcut {
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 6px 4px;
+    border: 1px solid transparent;
+    outline: none;
+}
+.desktop-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 6px;
+    image-rendering: pixelated;
+}
+.icon-label {
+    font-size: 11px;
+    text-shadow: 1px 1px 1px #000000;
+    padding: 1px 3px;
+    word-break: break-word;
+    display: block;
+}
+.shortcut:focus {
+    outline: 1px dotted #ffffff;
+}
+.shortcut:focus .icon-label {
+    background-color: #000080;
+    text-shadow: none;
+}
+.shortcut:hover .icon-label {
+    text-decoration: underline;
+}
+
+/* ================= RETRO 3D WINDOW ENGINE ================= */
+.window {
+    position: absolute;
+    background-color: #c0c0c0;
+    border: 2px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    box-shadow: 1px 1px 0px 0px #000000;
+    min-width: 280px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+/* Pastikan jendela yang ditutup tidak meninggalkan "tembok gaib" */
+.hidden {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+}
+
+.title-bar {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: #ffffff;
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    cursor: move;
+}
+.title-text {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+}
+.title-controls button {
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    width: 16px;
+    height: 16px;
+    font-weight: bold;
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+}
+.title-controls button:active {
+    border-color: #808080 #ffffff #ffffff #808080;
+    padding-top: 1px;
+    padding-left: 1px;
+}
+
+.window-menu {
+    display: flex;
+    gap: 12px;
+    padding: 2px 8px;
+    background-color: #c0c0c0;
+    border-bottom: 1px solid #808080;
+    font-size: 12px;
+    color: #000000;
+}
+.window-menu span { cursor: pointer; }
+.window-menu span:hover { background-color: #000080; color: #ffffff; }
+
+.window-body {
+    padding: 12px;
+    color: #000000;
+    overflow: hidden; /* Mencegah double scrollbar di level terluar window */
+}
+.tool-window {
+    background-color: #d4d0c8;
+    border: 2px solid inset;
+    border-color: #808080 #ffffff #ffffff #808080;
+    margin: 2px;
+    overflow-y: auto; /* Ini satu-satunya jalur scroll vertikal utama */
+    max-height: 380px;
+}
+.window {
+    position: absolute !important; /* Wajib agar jendela bisa di-drag dan mengambang */
+    pointer-events: auto; /* Memastikan jendela yang sedang aktif tetap bisa diklik didalamnya */
+}
+
+/* SPECIAL COMPONENT MODIFICATIONS */
+.notepad-body {
+    background-color: #ffffff;
+    padding: 1px !important;
+    border: 2px solid inset;
+    border-color: #808080 #ffffff #ffffff #808080;
+}
+.notepad-text {
+    width: 100%;
+    height: 260px;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 8px;
+    color: #000000;
+    background: transparent;
+}
+
+.section-title { font-weight: bold; margin-bottom: 10px; color: #000000; }
+
+/* ================= CLEAN RETRO GALLERY ENGINE ================= */
+.gallery-grid { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); /* Tetap bagi 2 kolom rata kanan-kiri */
+    gap: 12px; 
+    align-items: start; /* Mencegah item sebelah ikut ketarik melar ke bawah */
+    width: 100%;
+    overflow: hidden; /* Mencegah luapan internal pembentuk scrollbar ke-2 */
+}
+
+/* Setiap box item galeri */
+.gallery-item {
+    border: 2px solid inset;
+    border-color: #808080 #ffffff #ffffff #808080;
+    background: #ffffff;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    height: auto; /* Biar tinggi box pas membungkus gambarnya sendiri */
+}
+
+/* Kotak pratinjau gambar standar (Membungkus poster vertikal agar tetap besar & proporsional) */
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    max-height: 320px; /* Postermu aman, tetap tinggi besar & gagah! */
+    object-fit: contain; 
+    background-color: #e2e8f0; 
+    border: 1px solid #808080;
+    margin-bottom: 4px;
+}
+
+/* Teks nama/keterangan file di bawah gambar */
+.gallery-item span {
+    text-align: center;
+    width: 100%;
+    font-size: 11px;
+    color: #000000;
+    word-break: break-word;
+    line-height: 1.3;
+    margin-top: 4px;
+}
+
+/* CLASS KHUSUS PANORAMA: Memotong urutan grid & memanjang ke samping */
+.gallery-item.wide-row {
+    grid-column: 1 / -1 !important; /* Wajib sebaris penuh */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+.gallery-item.wide-row img {
+    height: auto;
+    max-height: 220px; /* Ukuran panorama pas, lebar dan tidak kekecilan */
+    object-fit: contain;
+    background-color: #e2e8f0;
+}
+
+/* Judul pembatas/nama folder di dalam galeri */
+.gallery-section-title {
+    grid-column: 1 / -1 !important; /* Wajib sebaris penuh memotong grid */
+    font-weight: bold;
+    font-size: 12px;
+    color: #000000;
+    background-color: #cbd5e1; 
+    padding: 6px 8px;
+    margin: 14px 0 4px 0;
+    border: 2px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+    text-align: left;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* ================= MEDIA PLAYER & COMPONENTS ================= */
+.video-container { border: 2px solid inset; border-color: #808080 #ffffff #ffffff #808080; background: #000000; }
+.media-player-controls { margin-top: 10px; background: #c0c0c0; padding: 6px; border: 1px solid #808080; }
+
+.badge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.badge-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #c0c0c0;
+    padding: 6px;
+    border: 2px solid;
+    border-color: #ffffff #808080 #808080 #ffffff;
+}
+.badge-pixel-icon { font-size: 22px; background: #ffffff; padding: 3px; border: 2px dashed #808080; }
+.badge-name { font-weight: bold; font-size: 11px; color: #000080; }
+.badge-desc { font-size: 10px; color: #303030; line-height: 1.2; }
+
+/* ================= STATS & PROGRESS TRACKING ================= */
+.stats-table { width: 100%; border-collapse: collapse; color: #000000; margin-bottom: 12px; }
+.stats-table td { padding: 6px 3px; font-family: monospace; }
+.stat-num { font-weight: bold; text-align: right; padding-right: 8px !important; color: #000080; width: 35px; }
+.progress-track { background: #ffffff; border: 2px solid inset; border-color: #808080 #ffffff #ffffff #808080; height: 14px; width: 100%; }
+.progress-fill { background: #000080; height: 100%; width: 0%; transition: width 1s cubic-bezier(0.1, 0.8, 0.25, 1); }
+.coffee-box { border: 2px solid inset; border-color: #808080 #ffffff #ffffff #808080; background: #ffffff; padding: 5px; font-family: monospace; font-size: 11px; }
+
+/* ================= TIMELINE COMPONENT ================= */
+.timeline-container { position: relative; padding-left: 18px; border-left: 2px dotted #808080; margin: 5px; color: #000000; }
+.timeline-item { position: relative; margin-bottom: 15px; }
+.timeline-item::before {
+    content: ''; position: absolute; left: -24px; top: 3px; width: 8px; height: 8px;
+    background: #c0c0c0; border: 2px solid; border-color: #ffffff #808080 #808080 #ffffff;
+}
+.timeline-year { font-family: monospace; font-weight: bold; color: #000080; font-size: 12px; }
+.timeline-content { background: #ffffff; padding: 6px; border: 1px solid #808080; font-size: 11px; line-height: 1.3; margin-top: 2px; }
+.retro-scroll { max-height: 250px; overflow-y: auto; }
+
+/* ================= COMMAND PROMPT (CMD) ================= */
+.cmd-body { background-color: #000000 !important; padding: 10px !important; font-family: 'Courier New', monospace; }
+.cmd-text { color: #00ff00; font-size: 12px; line-height: 1.4; }
+.cmd-prompt { color: #ffffff; }
+.cmd-table { color: #00ff00; font-family: 'Courier New', monospace; font-size: 12px; margin-top: 6px; margin-left: 8px; }
+.cmd-table td { padding: 3px 6px 3px 0; }
+
+/* ================= UTILITIES & BUTTONS ================= */
+.btn-retro {
+    background-color: #c0c0c0; border: 2px solid; border-color: #ffffff #808080 #808080 #ffffff;
+    padding: 4px 12px; cursor: pointer; color: #000000;
+}
+.btn-retro:active { border-color: #808080 #ffffff #ffffff #808080; }
+.text-center { text-align: center; }
+
+/* ANIMATION ELEMENTS */
+.blink { animation: retro-blink 0.8s linear infinite; }
+@keyframes retro-blink { 50% { opacity: 0; } }
+
+/* ================= WINDOWS TASKBAR ELEMENTS ================= */
+/* ================= WINDOWS TASKBAR ELEMENTS ================= */
+#taskbar {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 40px !important;
+    background-color: #c0c0c0; 
+    border-top: 2px solid #ffffff;
+    display: flex; 
+    align-items: center; 
+    padding: 0 6px; 
+    gap: 6px;
+    
+    /* Angka keramat agar taskbar SELALU berada di layer paling atas, tidak bisa ditutupi apa pun */
+    z-index: 999999 !important; 
+}
+#start-btn {
+    background-color: #c0c0c0; border: 2px solid; border-color: #ffffff #808080 #808080 #ffffff;
+    padding: 3px 10px; font-weight: bold; cursor: pointer; display: flex; align-items: center;
+}
+#start-btn:active, .taskbar-tab.active {
+    border-color: #808080 #ffffff #ffffff #808080 !important; background-color: #d4d0c8;
+}
+.active-apps { display: flex; gap: 4px; flex: 1; overflow-x: auto; height: 28px; align-items: center; }
+.taskbar-tab {
+    background-color: #c0c0c0; border: 2px solid; border-color: #ffffff #808080 #808080 #ffffff;
+    padding: 2px 8px; font-size: 11px; max-width: 120px; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis; cursor: pointer;
+    
+}
+#clock {
+    border: 2px solid; border-color: #808080 #ffffff #ffffff #808080;
+    padding: 3px 8px; background-color: #c0c0c0; font-weight: bold; color: #000000;
+}
+
+/* START MENU */
+#start-menu {
+    position: fixed; bottom: 40px; left: 4px; width: 180px;
+    background-color: #c0c0c0; border: 2px solid; border-color: #ffffff #808080 #808080 #ffffff;
+    display: flex; z-index: 10000;
+}
+.start-sidebar { background-color: #808080; width: 30px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; color: #ffffff; }
+.sidebar-text { transform: rotate(-90deg); transform-origin: center center; white-space: nowrap; font-size: 16px; letter-spacing: 1px; }
+.start-links { flex: 1; display: flex; flex-direction: column; padding: 2px; }
+.start-item { padding: 6px 8px; cursor: pointer; color: #000000; }
+.start-item:hover { background-color: #000080; color: #ffffff; }
+hr { border: 1px inset #ffffff; margin: 3px 0; }
+
+/* MASCOT & ASSISTANT */
+#mascot-box { position: fixed; bottom: 55px; right: 20px; z-index: 998; width: 160px; }
+.mascot-bubble {
+    background: #ffffe1; border: 1px solid #000000; border-radius: 5px; padding: 6px;
+    font-size: 11px; color: #000000; margin-bottom: 6px; position: relative; box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+.mascot-bubble::after {
+    content: ''; position: absolute; bottom: -6px; right: 25px; border-width: 6px 6px 0;
+    border-style: solid; border-color: #ffffe1 transparent; display: block; width: 0;
+}
+.mascot-avatar { background: #c0c0c0; border: 1px solid #000000; padding: 4px; font-weight: bold; text-align: center; font-size: 11px; color: #000000; }
+
+/* BSOD EXCEPTION LAYER */
+#bsod-screen { position: fixed; width: 100%; height: 100%; background-color: #0000aa; color: #ffffff; font-family: 'Courier New', Courier, monospace; font-size: 15px; padding: 8% 10%; z-index: 999999; }
+.bsod-content { max-width: 700px; margin: 0 auto; }
+.bsod-title { background-color: #ffffff; color: #0000aa; display: inline-block; padding: 0 8px; font-weight: bold; }
+
+/* ================= RESPONSIVE LAYOUT ENGINE ================= */
+@media (max-width: 768px) {
+    #desktop { flex-direction: row; flex-wrap: wrap; gap: 8px; padding: 8px; justify-content: center; overflow-y: auto; }
+    .shortcut { width: 75px; padding: 4px 2px; }
+    .desktop-icon { width: 32px; height: 32px; }
+    .window { width: 100% !important; height: calc(100% - 40px) !important; top: 0 !important; left: 0 !important; position: fixed !important; box-shadow: none; }
+    .window-body { max-height: calc(100% - 65px) !important; -webkit-overflow-scrolling: touch; }
+    .title-bar { cursor: default; }
+    
+    /* Responsive galeri di HP */
+    .gallery-grid, .badge-grid { grid-template-columns: 1fr; }
+    #mascot-box { display: none !important; }
+}

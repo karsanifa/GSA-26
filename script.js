@@ -215,7 +215,7 @@ if (bsodElement) {
     });
 }
 
-// ================= 9. ADVANCED DRAG & DROP CONTROL ENGINE =================
+// ================= 9. ADVANCED DRAG & DROP CONTROL ENGINE (UPDATED) =================
 document.querySelectorAll('.window').forEach(initiateDraggableFeature);
 
 function initiateDraggableFeature(windowEl) {
@@ -226,12 +226,16 @@ function initiateDraggableFeature(windowEl) {
     let pointerX, pointerY, initialLeft, initialTop;
 
     titleBar.addEventListener('mousedown', (e) => {
-        if (window.innerWidth <= 768) return; 
+        // Mencegah drag jika klik tombol close (x)
         if (e.target.tagName === 'BUTTON') return;
+        
+        e.preventDefault(); // Mencegah teks terblokir saat menggeser jendela
 
         isMoving = true;
         pointerX = e.clientX;
         pointerY = e.clientY;
+        
+        windowEl.style.position = 'absolute';
         initialLeft = windowEl.offsetLeft;
         initialTop = windowEl.offsetTop;
         
@@ -240,6 +244,8 @@ function initiateDraggableFeature(windowEl) {
 
     document.addEventListener('mousemove', (e) => {
         if (!isMoving) return;
+        e.preventDefault();
+        
         const currentDistanceX = e.clientX - pointerX;
         const currentDistanceY = e.clientY - pointerY;
         
@@ -252,40 +258,44 @@ function initiateDraggableFeature(windowEl) {
     });
 }
 
-// ================= 10. WINDOWS MEDIA PLAYER PLAYLIST ENGINE =================
-const videoPlayer = document.getElementById('main-video-player');
-const videoFilename = document.getElementById('video-filename');
-const playlistItems = document.querySelectorAll('.playlist-item');
-const videoProgressBar = document.getElementById('video-progress');
-
-// Menambahkan fungsi klik untuk setiap item list video
-if (playlistItems.length > 0) {
-    playlistItems.forEach(item => {
-        item.addEventListener('click', function() {
-            const targetVideo = this.getAttribute('data-src');
-            const targetTitle = this.getAttribute('data-title');
-
-            if (videoPlayer) {
-                videoPlayer.src = targetVideo;
-                videoPlayer.load();
-                videoPlayer.play().catch(error => {
-                    console.log("Pemutaran otomatis tertahan: ", error);
-                });
-            }
-
-            if (videoFilename) {
-                videoFilename.innerText = `File: ${targetTitle}`;
-            }
-        });
-    });
+// ================= 10. GLOBAL PLAYLIST MEDIA ENGINE (UPDATED) =================
+function pilihMedia(urlDrive, namaFile) {
+    const videoPlayer = document.getElementById('main-video-player');
+    const videoFilename = document.getElementById('video-filename');
+    
+    if (videoPlayer) {
+        // Mengganti src iframe ke link preview Google Drive
+        videoPlayer.src = urlDrive;
+    }
+    
+    if (videoFilename) {
+        // Update status teks di bawah layar
+        videoFilename.innerHTML = 
+            'File: ' + namaFile + '<br>' +
+            '<span style="color: green; font-weight: bold;">Status: Playing from Google Drive</span>';
+    }
 }
 
-// Membuat custom progress bar biru bergerak otomatis
-if (videoPlayer && videoProgressBar) {
-    videoPlayer.addEventListener('timeupdate', function() {
-        if (videoPlayer.duration) {
-            const percentage = (videoPlayer.currentTime / videoPlayer.duration) * 100;
-            videoProgressBar.style.width = percentage + '%';
-        }
+function switchProfileTab(tabName, element) {
+    // Sembunyikan semua konten tab dengan melepas class 'active'
+    const contents = document.querySelectorAll('.profile-content');
+    contents.forEach(content => {
+        content.classList.remove('active');
     });
+
+    // Tampilkan tab yang dipilih dengan menambah class 'active'
+    const selectedContent = document.getElementById('profile-tab-' + tabName);
+    if (selectedContent) {
+        selectedContent.classList.add('active');
+    }
+
+    // Ubah status warna menu navigasi
+    const tabs = document.querySelectorAll('.profile-tab');
+    tabs.forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+    if (element) {
+        element.classList.add('active');
+    }
 }

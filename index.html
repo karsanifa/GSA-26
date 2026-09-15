@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fika OS - Portfolio PDD PKKMB Selection</title>
+    <title>Google Student Ambassador - My Blog</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div id="boot-screen">
         <div class="boot-container">
-            <h1 class="game-title">PORTO OS 98</h1>
+            <h1 class="game-title">BLOG OS 98</h1>
             <p class="game-text cyan">Initializing Creative Engine...</p>
             <p class="game-text yellow">Loading Storytelling Module...</p>
-            <p class="game-text white">Preparing Portfolio Database...</p>
+            <p class="game-text white">Preparing Blog Database...</p>
             
             <div class="boot-progress-zone">
                 <p class="game-text green">SYSTEM LOADING: <span id="boot-percentage">0%</span></p>
@@ -23,7 +24,7 @@
                 </div>
             </div>
 
-            <p class="game-text red blink hidden" id="boot-ready-text">Please wait <b>Revisi...</b></p>
+            <p class="game-text red blink hidden" id="boot-ready-text">Please wait <b>GSA 2026</b></p>
         </div>
     </div>
 
@@ -36,7 +37,7 @@
 
         <div class="shortcut" tabindex="0" onclick="openWindow('win-design')">
             <img src="https://cdn-icons-png.flaticon.com/128/2921/2921332.png" alt="Design Gallery" class="desktop-icon">
-            <span class="icon-label">Galeri Desain</span>
+            <span class="icon-label">Design Gallery</span>
         </div>
 
         <div class="shortcut" tabindex="0" onclick="openWindow('win-media')">
@@ -61,41 +62,79 @@
 
         <div class="shortcut" tabindex="0" onclick="openWindow('win-contact')">
             <img src="https://cdn-icons-png.flaticon.com/128/2921/2921328.png" alt="Contact" class="desktop-icon">
-            <span class="icon-label">HubungiSaya.exe</span>
+            <span class="icon-label">ContactMe.exe</span>
         </div>
 
-        <div id="win-about" class="window hidden" style="top: 3%; left: 6%; width: 450px;">
-            <div class="title-bar">
-                <div class="title-text">FIKA_PROFILE.TXT - Notepad</div>
-                <div class="title-controls"><button onclick="closeWindow('win-about')">×</button></div>
-            </div>
-            <div class="window-menu">
-                <span>File</span><span>Edit</span><span>Search</span><span>Help</span>
-            </div>
-            <div class="window-body notepad-body">
-                <textarea readonly class="notepad-text">
+        <!-- Window Profile -->
+<div id="win-about" class="window hidden" style="top: 3%; left: 6%; width: 450px;">
+    <div class="title-bar">
+        <div class="title-text">FIKA_PROFILE.TXT - Notepad</div>
+        <div class="title-controls"><button onclick="closeWindow('win-about')">×</button></div>
+    </div>
+    
+    <!-- Menu Tab Navigasi -->
+    <div class="window-menu">
+        <span class="profile-tab active" onclick="switchProfileTab('file', this)" style="cursor: pointer; padding: 2px 6px;">File</span>
+        <span class="profile-tab" onclick="switchProfileTab('edit', this)" style="cursor: pointer; padding: 2px 6px;">Edit</span>
+        <span class="profile-tab" onclick="switchProfileTab('search', this)" style="cursor: pointer; padding: 2px 6px;">Search</span>
+        <span class="profile-tab" onclick="switchProfileTab('help', this)" style="cursor: pointer; padding: 2px 6px;">Help</span>
+    </div>
+
+    <div class="window-body notepad-body" style="padding: 10px; overflow-y: auto;">
+        
+        <!-- KATEGORI 1: FILE -->
+        <div id="profile-tab-file" class="profile-content active">
+            <pre class="notepad-text" style="margin: 0; padding: 0; font-family: monospace; white-space: pre-wrap;">
 FILE: FIKA_PROFILE.TXT
 -----------------------------------------
 Identity        : Rofiqoh Qurotun Nuraini
 NIM             : E41252916
-Current Class   : Informatics Engineering, Polije
+Current Class   : Informatics Engineering, State Polytechnic of Jember
 Department Skill: Canva, Figma, HTML, CSS, JS
-Current Mission : PDD Staff Selection PKKMB 2026
+Current Mission : Google Student Ambassador 2026
 -----------------------------------------
-
-[FUN FACT]
-Lebih suka tidur daripada war seblak.
-Lebih suka revisi daripada dipuji
-
-[BIOGRAPHY]
-Halo! Saya Fika, mahasiswa Teknik Informatika Politeknik Negeri Jember. Sebagai representasi anak IT yang memiliki pondasi kuat di bidang organisasi dan penulisan kreatif, saya memilih daftar jadi divisi Publikasi, Dekorasi, dan Dokumentasi (PDD). 
-
-Selamat explore web portofolio saya! 
-Semoga tergerak hatinya untuk merekrut saya, hehe :v 
-                </textarea>
-            </div>
+            </pre>
         </div>
 
+        <!-- KATEGORI 2: EDIT -->
+        <div id="profile-tab-edit" class="profile-content">
+            <p class="notepad-text" style="margin: 0 0 8px 0; padding: 0;"><strong>[FUN FACT]</strong></p>
+            <p class="notepad-text" style="margin: 0 0 10px 0; padding: 0;">I’d rather sleep than fight for seblak.<br>I’d rather do revisions than get praised.</p>
+            
+            <figure class="profile-image-container" style="margin: 10px 0 0 0; text-align: center;">
+                <img src="ntut.jpeg" alt="Fun Fact Image" style="max-width: 100%; height: auto; border: 2px solid #808080;">
+                <figcaption style="font-size: 11px; color: #555; margin-top: 4px; font-style: italic;">
+                    That's me! And always like that.
+                </figcaption>
+            </figure>
+        </div>
+
+        <!-- KATEGORI 3: SEARCH -->
+        <div id="profile-tab-search" class="profile-content">
+            <p class="notepad-text" style="margin: 0 0 8px 0; padding: 0;"><strong>[BIOGRAPHY]</strong></p>
+            <p class="notepad-text" style="margin: 0 0 10px 0; padding: 0;">
+                Hi there! I'm Fika, an Informatics Engineering student at State Polytechnic of Jember. Combining a tech background with a solid foundation in organizational leadership and creative writing, I am excited to be a Google Student Ambassador 2026.
+            </p>
+            
+            <figure class="profile-image-container" style="margin: 10px 0 0 0; text-align: center;">
+                <img src="roko.jpeg" alt="Bio Image" style="max-width: 100%; height: auto; border: 2px solid #808080;">
+                <figcaption style="font-size: 11px; color: #555; margin-top: 4px; font-style: italic;">
+                    Caption: citizen journalism event.
+                </figcaption>
+            </figure>
+        </div>
+
+        <!-- KATEGORI 4: HELP -->
+        <div id="profile-tab-help" class="profile-content">
+            <p class="notepad-text" style="margin: 0 0 6px 0; padding: 0;"><strong>[HELP]</strong></p>
+            <p class="notepad-text" style="margin: 0 0 6px 0; padding: 0;">Do you need something to help?</p>
+            <p class="notepad-text" style="margin: 0; padding: 0;">Don't forget to sholat, Bro</p>
+        </div>
+
+    </div>
+</div>
+
+        <!-- Window Design -->
         <div id="win-design" class="window hidden" style="top: 7%; left: 26%; width: 520px;">
             <div class="title-bar">
                 <div class="title-text">Design_Studio - File Explorer</div>
@@ -105,153 +144,142 @@ Semoga tergerak hatinya untuk merekrut saya, hehe :v
                 <span>View</span><span>Go</span><span>Favorites</span><span>Tools</span>
             </div>
             <div class="window-body tool-window">
-                
                 <div class="gallery-grid">
-                    <div class="gallery-section-title">Lomba Poster</div>
+                    <div class="gallery-section-title">Poster Competitions</div>
                     <div class="gallery-item">
                         <img src="lomba.jpeg" alt="Poster">
-                        <span>Lomba Ramadhan by HMJTI</span>
+                        <span>Ramadan Competition by HMJTI</span>
                     </div>
                     <div class="gallery-item">
                         <img src="lomba.2.jpeg" alt="UI/UX Web">
-                        <span>Lomba Duta Inspirative Indonesia</span>
+                        <span>Inspirational Ambassador Competition Indonesia</span>
                     </div>
                     <div class="gallery-item">
                         <img src="lomba.3.jpg" alt="UKM Explant">
-                        <span>Lomba Nasional di Universitas Ahmad Dahlan, Yogyakarta</span>
+                        <span>National Competition at Ahmad Dahlan University, Yogyakarta</span>
                     </div>
 
-                    <div class="gallery-section-title">Aset Desain & Portofolio Kreatif (Canva/Figma)</div>
+                    <div class="gallery-section-title">Design Assets & Creative Portfolio (Canva/Figma)</div>
                     <div class="gallery-item">
                         <img src="tumbuh.jpeg">
-                        <span>Lomba Resensi Buku 2025 by Perpus Polije</span>
+                        <span>Book Review Competition 2025 by Polije Library</span>
                     </div>
                     <div class="gallery-item">
                         <img src="info.jpeg">
-                        <span>Feed Instagram karsa.nifa</span>
+                        <span>Instagram Feed karsa.nifa</span>
                     </div>
                     <div class="gallery-item">
                         <img src="persepsi.jpeg">
-                        <span>feed rangkuman materi LKMM Pra-TD</span>
+                        <span>LKMM Pre-TD Material Summary Feed</span>
                     </div>
                     <div class="gallery-item">
                         <img src="matahari.jpeg">
-                        <span>Feed Instagram karsa.nifa</span>
+                        <span>Instagram Feed karsa.nifa</span>
                     </div>
                     <div class="gallery-item">
                         <img src="adek.jpeg">
                         <img src="adek2.jpeg" style="margin-top: 4px;">
-                        <span>Feed Lomba Essai Inspiratif by Sisterlillah</span>
+                        <span>Inspirational Essay Competition Feed by Sisterlillah</span>
                     </div>
 
-                    <div class="gallery-section-title">Wallpaper Desktop</div>
+                    <div class="gallery-section-title">Desktop Wallpapers</div>
                     <div class="gallery-item wide-row">
                         <img src="Laptop.jpeg">
-                        <span>Wallpaper Pas Maba</span>
+                        <span>Freshman Year Wallpaper</span>
                     </div>
                     <div class="gallery-item wide-row">
                         <img src="wallpaper1.jpeg">
-                        <span>Wallpaper Gabutz</span>
+                        <span>Casual Wallpaper</span>
                     </div>
                     <div class="gallery-item wide-row">
                         <img src="wallpaper2.jpeg">
-                        <span>Wallpaper Gabutz 2</span>
+                        <span>Casual Wallpaper 2</span>
                     </div>
                     
-                    <div class="gallery-section-title">Wallpaper HP</div>
+                    <div class="gallery-section-title">Phone Wallpapers</div>
                     <div class="gallery-item">
                         <img src="lop.jpeg" alt="Content Visual">
-                        <span>Wallpaper HP Foto Keluarga</span>
+                        <span>Family Photo Phone Wallpaper</span>
                     </div>
                     <div class="gallery-item">
                         <img src="hp2.jpeg" alt="Poster">
-                        <span>Wallpaper Kampus Impian</span>
+                        <span>Dream Campus Wallpaper</span>
                     </div>
                     <div class="gallery-item">
                         <img src="hp1.jpeg" alt="UI/UX Web">
-                        <span>Wallpaper Kampus Impian</span>
+                        <span>Dream Campus Wallpaper</span>
                     </div>
-                </div>
 
-                <div class="gallery-section-title">Pamflet Kegiatan</div>
+                    <div class="gallery-section-title">Event Pamphlets</div>
                     <div class="gallery-item">
                         <img src="bukber.jpeg" alt="Content Visual">
-                        <span>Pamflet Bukber Alumni</span>
-                </div>
+                        <span>Alumni Fast-Breaking Event Pamphlet</span>
+                    </div>
 
-                <div class="gallery-section-title">Life Report</div>
+                    <div class="gallery-section-title">Life Report</div>
                     <div class="gallery-item">
                         <img src="life.report.jpeg" alt="Content Visual">
-                        <span>Life Report (di desain bersama tim PDD Kegiatan)</span>
-                </div></div></div></div>
-                
-    <!--Video Editing Result-->
-               <div id="win-media" class="window hidden" style="top: 14%; left: 16%; width: 480px;">
-    <div class="title-bar">
-        <div class="title-text">Media_Lab - Windows Media Player</div>
-        <div class="title-controls"><button onclick="closeWindow('win-media')">×</button></div>
-    </div>
-
-    <div class="window-body tool-window">
-        <p class="section-title">Video Editing & Creative Content Creator Production</p>
-        
-        <!-- Area Layar Media (Diganti Gambar) -->
-        <div class="video-container" style="text-align: center; background: #000;">
-            <img id="main-video-player" src="sad-face-cloud-icon-no-internet-connection-free-vector.jpg" width="100%" height="260" style="object-fit: contain; display: block;" alt="Media Preview">
-        </div>
-        
-        <div class="media-player-controls">
-            <div class="progress-track">
-                <div id="video-progress" class="progress-fill" style="width: 100%; background: #000080;"></div>
+                        <span>Life Report (designed with the Event Documentation Team)</span>
+                    </div>
+                </div>
             </div>
-            <!-- Area Teks Status/Pesan -->
-            <p id="video-filename" style="font-size: 11px; margin-top: 5px; font-family: monospace; color: #333; line-height: 1.4;">
-                File: Teaser_Jember_Book_Party_HD.mp4
-            </p>
         </div>
-
-        <!-- Playlist Video -->
-        <div class="playlist-container" style="margin-top: 10px; border-top: 1px solid #808080; padding-top: 10px;">
-            <p style="font-size: 12px; font-weight: bold; margin-bottom: 5px;">Pilih Video:</p>
-            <ul style="font-size: 11px; font-family: monospace; list-style: none; padding-left: 0;">
                 
-                <!-- SESUAIKAN: Ganti 'gambar1.jpg' dan 'Teaser_Jember_Book_Party_HD.mp4' -->
-                <li class="playlist-item" onclick="pilihMedia('gambar1.jpg', 'Teaser_Jember_Book_Party_HD.mp4')" style="cursor: pointer; padding: 4px 2px; color: blue; text-decoration: underline;">
-                    1. Video Project YOI.AI
-                </li>
+        <!-- Window Media -->
+        <div id="win-media" class="window hidden" style="top: 14%; left: 16%; width: 480px;">
+            <div class="title-bar">
+                <div class="title-text">Media_Lab - Windows Media Player</div>
+                <div class="title-controls"><button onclick="closeWindow('win-media')">×</button></div>
+            </div>
 
-                <!-- SESUAIKAN: Ganti 'gambar2.jpg' dan 'Video_English_Content.mp4' -->
-                <li class="playlist-item" onclick="pilihMedia('gambar2.jpg', 'Video_English_Content.mp4')" style="cursor: pointer; padding: 4px 2px; color: blue; text-decoration: underline;">
-                    2. Video English Content
-                </li>
+            <div class="window-body tool-window">
+                <p class="section-title">Video Editing & Creative Content Creator Production</p>
+                
+                <!-- Media Screen Area (Using iframe Player) -->
+                <div class="video-container" style="text-align: center; background: #000; height: 260px;">
+                    <iframe id="main-video-player" 
+                            src="https://drive.google.com/file/d/1lKISssVS6PdB9HzbgthRlRMUYPyx8BMn/preview" 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            allow="autoplay" 
+                            style="border: none; display: block;">
+                    </iframe>
+                </div>
+                
+                <div class="media-player-controls">
+                    <div class="progress-track">
+                        <div id="video-progress" class="progress-fill" style="width: 100%; background: #000080;"></div>
+                    </div>
+                    <!-- Status/Message Text Area -->
+                    <p id="video-filename" style="font-size: 11px; margin-top: 5px; font-family: monospace; color: #333; line-height: 1.4;">
+                        File: Teaser_Jember_Book_Party_HD.mp4 <br>
+                        <span style="color: green; font-weight: bold;">Status: Playing from Google Drive</span>
+                    </p>
+                </div>
 
-                <!-- SESUAIKAN: Ganti 'gambar3.jpg' dan 'Video_English_Idul_Adha.mp4' -->
-                <li class="playlist-item" onclick="pilihMedia('gambar3.jpg', 'Video_English_Idul_Adha.mp4')" style="cursor: pointer; padding: 4px 2px; color: blue; text-decoration: underline;">
-                    3. Video English Idul Adha
-                </li>
-
-                <!-- SESUAIKAN: Ganti 'gambar4.jpg' dan 'Video_Tugas_Beasiswa.mp4' -->
-                <li class="playlist-item" onclick="pilihMedia('gambar4.jpg', 'Video_Tugas_Beasiswa.mp4')" style="cursor: pointer; padding: 4px 2px; color: blue; text-decoration: underline;">
-                    4. Video Tugas Beasiswa
-                </li>
-
-            </ul>
+                <!-- Video Playlist -->
+                <div class="playlist-container" style="margin-top: 10px; border-top: 1px solid #808080; padding-top: 10px;">
+                    <p style="font-size: 12px; font-weight: bold; margin-bottom: 5px;">Select Video:</p>
+                    <ul style="font-size: 11px; font-family: monospace; list-style: none; padding-left: 0;">
+                        <li class="playlist-item" onclick="pilihMedia('https://drive.google.com/file/d/1lKISssVS6PdB9HzbgthRlRMUYPyx8BMn/preview', 'Teaser_Jember_Book_Party_HD.mp4')" style="cursor: pointer; padding: 4px 2px; color: blue; text-decoration: underline;">
+                            1. YOI.AI Video Project
+                        </li>
+                        <li class="playlist-item" onclick="pilihMedia('https://drive.google.com/file/d/1A2lxc8KWq9Ej7RD4QelAwHW5lqS-hI8P/preview', 'Video_Library_Content.mp4')" style="cursor: pointer; padding: 4px 2px; color: blue; text-decoration: underline;">
+                            2. Library Content
+                        </li>
+                        <li class="playlist-item" onclick="pilihMedia('https://drive.google.com/file/d/1lJbeUaaf5d9PkYEBlpztTQcWMI7eW41f/preview', 'Video_English_Club_Event.mp4')" style="cursor: pointer; padding: 4px 2px; color: blue; text-decoration: underline;">
+                            3. English Club Event Video
+                        </li>
+                        <li class="playlist-item" onclick="pilihMedia('https://drive.google.com/file/d/1v7CxpL990Ai0oT3OqHSnJJGrIkTiT4AI/preview', 'Video_Tugas_Beasiswa.mp4')" style="cursor: pointer; padding: 4px 2px; color: blue; text-decoration: underline;">
+                            4. Scholarship Assignment Video
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
 
-<!-- Script Pembaca Klik Playlist -->
-<script>
-    function pilihMedia(namaGambar, namaFile) {
-        // 1. Mengganti gambar layar utama
-        document.getElementById('main-video-player').src = namaGambar;
-        
-        // 2. Mengubah teks status di bawah layar
-        document.getElementById('video-filename').innerHTML = 
-            'File: ' + namaFile + '<br>' +
-            '<span style="color: red; font-weight: bold;">sorry! Video beluum ada</span>';
-    }
-</script>
+        <!-- Window Achievements -->
         <div id="win-achievements" class="window hidden" style="top: 20%; left: 34%; width: 460px;">
             <div class="title-bar">
                 <div class="title-text">Achievements.exe</div>
@@ -270,28 +298,29 @@ Semoga tergerak hatinya untuk merekrut saya, hehe :v
                     <div class="badge-card">
                         <span class="badge-pixel-icon">🥇</span>
                         <div class="badge-info">
-                            <div class="badge-name">Top 1 MTS Yasinat Assessment t.a 2022/2023</div>
-                            <div class="badge-desc">Top 1 MA Yasinat Assessment t.a 2025/2026</div>
+                            <div class="badge-name">Top 1 MTS Yasinat Assessment A.Y. 2022/2023</div>
+                            <div class="badge-desc">Top 1 MA Yasinat Assessment A.Y. 2025/2026</div>
                         </div>
                     </div>
                     <div class="badge-card">
                         <span class="badge-pixel-icon">👩‍🏫</span>
                         <div class="badge-info">
                             <div class="badge-name">Best Teaching Practice</div>
-                            <div class="badge-desc">Metode Yanbu'a unggulan di TPQ YASINAT.</div>
+                            <div class="badge-desc">Featured Yanbu'a method at TPQ YASINAT.</div>
                         </div>
                     </div>
                     <div class="badge-card">
                         <span class="badge-pixel-icon">⚡</span>
                         <div class="badge-info">
                             <div class="badge-name">Certified Leader</div>
-                            <div class="badge-desc">Lulus LKMM Pre-TD, LKMM TD, hingga PP LKMM TD 2026.</div>
+                            <div class="badge-desc">Completed LKMM Pre-TD, LKMM TD, through PP LKMM TD 2026.</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Window System Stats -->
         <div id="win-stats" class="window hidden" style="top: 24%; left: 19%; width: 420px;">
             <div class="title-bar">
                 <div class="title-text">System_Stats.exe</div>
@@ -327,6 +356,7 @@ Semoga tergerak hatinya untuk merekrut saya, hehe :v
             </div>
         </div>
 
+        <!-- Window Timeline -->
         <div id="win-timeline" class="window hidden" style="top: 28%; left: 10%; width: 440px;">
             <div class="title-bar">
                 <div class="title-text">Timeline.log</div>
@@ -339,35 +369,35 @@ Semoga tergerak hatinya untuk merekrut saya, hehe :v
                         <div class="timeline-year">2019 - 2022</div>
                         <div class="timeline-content">
                             <strong>MTs Nahdlatuth Thalabah Era</strong><br>
-                            Arts Coordinator OSIM in grade VII to IX (mengelola redaksi majalah dinding, class meeting, dan kegiatan kesenian)
-                            Ketua Majelis Al-Quran
+                            Arts Coordinator OSIM in grade VII to IX (managed magazine editorial, class meetings, and art activities), Head of Al-Quran Assembly.
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">2022 - 2024</div>
                         <div class="timeline-content">
                             <strong>MA Nahdlatuth Thalabah Division Head</strong><br>
-                            Ketua Divisi Seni, Bahasa, dan Olahraga. 
+                            Head of Arts, Language, and Sports Division. 
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">2024 - 2025</div>
                         <div class="timeline-content">
-                            <strong>Top Management: Ketua OSIM</strong><br>
-                            Memimpin tim, mengoordinasikan berbagai program kerja, dan meraih penghargaan Karya Tulis Ilmiah Terbaik.
+                            <strong>Top Management: Head of OSIM</strong><br>
+                            Led the team, coordinated various work programs, and earned Best Scientific Writing Award.
                         </div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-year">2025 - 2026 (Present)</div>
                         <div class="timeline-content">
                             <strong>Informatics Expansion & Content Intern</strong><br>
-                            Kuliah TI Polije, Networking Div UKM Explant, Content Writer di Studilanjut.id & English Club Jember Book Party, serta Tim Operasional Awaremind Indonesia.
+                            Informatics Engineering Student at Polije, Networking Division at UKM Explant, Content Writer at Studilanjut.id, SatuHikmah.id & English Club Jember Book Party, 2nd Place at National Website Campus Competition at PCFest 2026.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Window Contact -->
         <div id="win-contact" class="window hidden" style="top: 34%; left: 32%; width: 360px;">
             <div class="title-bar">
                 <div class="title-text">Contact.exe</div>
@@ -381,11 +411,12 @@ Semoga tergerak hatinya untuk merekrut saya, hehe :v
                 <p style="margin: 4px 0;">💼 LinkedIn: <a href="https://www.linkedin.com/in/rofiqoh-fika-6536b3380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" style="color: #000080;">Rofiqoh Fika</a></p>
                 <p style="margin: 4px 0;">📸 IG Accounts: <a href="https://www.instagram.com/qurrotafi/#" target="_blank" style="color: #000080;">@qurrotafi</a> / <a href="https://www.instagram.com/aiwah.kahfi/#" target="_blank" style="color: #000080;">@aiwah_kahfi</a></p>
                 <div class="text-center">
-                    <button class="btn-retro" style="margin-top: 12px;" onclick="alert('PING! Jalur komunikasi aman terhubung ke Fika.')">Kirim Isyarat PING</button>
+                    <button class="btn-retro" style="margin-top: 12px;" onclick="alert('PING! Connection path active.')">Kirim Isyarat PING</button>
                 </div>
             </div>
         </div>
 
+        <!-- Window Developer Prompt -->
         <div id="win-developer" class="window hidden" style="top: 22%; left: 22%; width: 460px;">
             <div class="title-bar">
                 <div class="title-text">Polije_Informatics_Prompt.exe - MS-DOS</div>
@@ -407,6 +438,7 @@ Semoga tergerak hatinya untuk merekrut saya, hehe :v
             </div>
         </div>
 
+        <!-- System Alert Popup -->
         <div id="dev-popup" class="window hidden" style="top: 35%; left: 35%; z-index: 10000; min-width: 280px;">
             <div class="title-bar"><div class="title-text">System Alert</div></div>
             <div class="window-body text-center tool-window">
@@ -415,11 +447,12 @@ Semoga tergerak hatinya untuk merekrut saya, hehe :v
             </div>
         </div>
 
+        <!-- BSOD Screen -->
         <div id="bsod-screen" class="hidden">
             <div class="bsod-content">
                 <p class="bsod-title">Windows</p>
                 <br>
-                <p>An exception 0E has occurred at 0028:C0011A2B in VxD PDD_PKKMB_SELECTION.</p>
+                <p>An exception 0E has occurred at 0028:C0011A2B in VxD GSA_2026_SELECTION.</p>
                 <p>The system was put into a forced hibernation state because Fika went to sleep to avoid a seblak war.</p>
                 <br>
                 <p>* Click anywhere on the screen to awake the candidate and reboot Fika OS.</p>
@@ -429,15 +462,17 @@ Semoga tergerak hatinya untuk merekrut saya, hehe :v
             </div>
         </div>
 
+        <!-- Mascot Box -->
         <div id="mascot-box" class="hidden">
             <div class="mascot-bubble">
-                <p id="mascot-text">Assalamu'alaikum, Ini aku, Fika. Klik folder di desktop atau buka menu Start untuk meriset rekam jejak PDD saya!</p>
+                <p id="mascot-text">Hi! I'm Fika. Click the folders on desktop or open Start menu to explore my mini blog!</p>
             </div>
-            <div class="mascot-avatar">✨ Aku </div>
+            <div class="mascot-avatar">✨ Fika </div>
         </div>
 
     </div>
 
+    <!-- Taskbar -->
     <div id="taskbar">
         <button id="start-btn" onclick="toggleStartMenu()">
             <span style="font-weight: bold;">Start</span>
@@ -446,13 +481,14 @@ Semoga tergerak hatinya untuk merekrut saya, hehe :v
         <div id="clock">12:00 PM</div>
     </div>
 
+    <!-- Start Menu -->
     <div id="start-menu" class="hidden">
         <div class="start-sidebar">
             <span class="sidebar-text">Fika<b>98</b></span>
         </div>
         <div class="start-links">
             <div class="start-item" onclick="openWindow('win-about'); toggleStartMenu();">👤 Profile.txt</div>
-            <div class="start-item" onclick="openWindow('win-design'); toggleStartMenu();">📁 Design Studio</div>
+            <div class="start-item" onclick="openWindow('win-design'); toggleStartMenu();">📁 Design Gallery</div>
             <div class="start-item" onclick="openWindow('win-media'); toggleStartMenu();">🎬 Media Lab</div>
             <div class="start-item" onclick="openWindow('win-achievements'); toggleStartMenu();">🏆 Achievements</div>
             <div class="start-item" onclick="openWindow('win-stats'); toggleStartMenu();">📈 System Stats</div>
@@ -462,6 +498,38 @@ Semoga tergerak hatinya untuk merekrut saya, hehe :v
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Script Pembaca Klik Playlist -->
+    <script>
+        function pilihMedia(urlDrive, namaFile) {
+            document.getElementById('main-video-player').src = urlDrive;
+            document.getElementById('video-filename').innerHTML = 
+                'File: ' + namaFile + '<br>' +
+                '<span style="color: green; font-weight: bold;">Status: Playing from Google Drive</span>';
+        }
+
+    function switchProfileTab(tabName, element) {
+    // Sembunyikan semua konten tab
+    const contents = document.querySelectorAll('.profile-content');
+    contents.forEach(content => content.style.display = 'none');
+
+    // Tampilkan konten tab yang dipilih
+    const selectedContent = document.getElementById('profile-tab-' + tabName);
+    if (selectedContent) {
+        selectedContent.style.display = 'block';
+    }
+
+    // Ubah status visual/warna menu yang aktif
+    const tabs = document.querySelectorAll('.profile-tab');
+    tabs.forEach(tab => {
+        tab.style.backgroundColor = 'transparent';
+        tab.style.color = '#000';
+    });
+
+    if (element) {
+        element.style.backgroundColor = '#000080';
+        element.style.color = '#fff';
+    }
+}
+    </script>
 </body>
 </html>

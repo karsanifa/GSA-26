@@ -255,14 +255,14 @@ body, html {
 }
 .notepad-text {
     width: 100%;
-    height: 260px;
+    height: auto;
     border: none;
     outline: none;
     resize: none;
     font-family: 'Courier New', Courier, monospace;
     font-size: 13px;
     line-height: 1.5;
-    padding: 8px;
+    padding: 2px 0;
     color: #000000;
     background: transparent;
 }
@@ -481,4 +481,32 @@ hr { border: 1px inset #ffffff; margin: 3px 0; }
     /* Responsive galeri di HP */
     .gallery-grid, .badge-grid { grid-template-columns: 1fr; }
     #mascot-box { display: none !important; }
+}
+
+.profile-tab:hover {
+    background-color: #000080;
+    color: white;
+}
+
+/* Mematikan flexbox penarik spasi pada Notepad */
+.notepad-body {
+    display: block !important;
+    height: 320px !important;
+}
+
+/* Sembunyikan semua tab secara default */
+.profile-content {
+    display: none;
+    height: auto !important;
+}
+
+/* Tampilkan hanya tab yang memiliki class 'active' */
+.profile-content.active {
+    display: block !important;
+}
+
+/* Style tombol tab menu aktif */
+.profile-tab.active {
+    background-color: #000080;
+    color: #ffffff;
 }
